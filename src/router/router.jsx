@@ -2,12 +2,12 @@ import { createBrowserRouter } from "react-router";
 import HomeLayouts from "../layouts/HomeLayouts";
 import Home from "../pages/Home";
 import AuthenticateLayout from "../layouts/AuthenticateLayout";
-import SignIn from "../components/SignIn/SignIn";
-import SignUp from "../components/SignUp/SignUp";
 import Courses from "../pages/Courses";
 import CourseDetails from "../pages/CourseDetails";
 import UserDetails from "../pages/UserDetails";
 import AddCourse from "../pages/AddCourse";
+import SignIn from "../pages/SignIn";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
     {
@@ -23,12 +23,12 @@ const router = createBrowserRouter([
                 Component:AuthenticateLayout,
                 children: [
                     {
-                        path:'authenticate/signIn',
+                        path: 'signIn',
                         Component:SignIn,
                     },
                     {
-                        path:'authenticate/signUp',
-                        Component: SignUp,
+                        path:'register',
+                        Component: Register,
                     }
                 ]
             },
