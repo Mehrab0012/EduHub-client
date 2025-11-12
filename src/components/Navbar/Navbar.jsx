@@ -2,13 +2,14 @@ import { use, useState } from 'react';
 import NavLinks from '../NavLinks/NavLinks';
 import { IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-router';
-import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
+import ThemeToggleButton from '../../ThemeContext/ThemeToggleButton';
 
 
 const Navbar = () => {
     const { user, handleSignOut } = use(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
+
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -28,8 +29,9 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='flex justify-between items-center p-10 max-md:p-3 relative z-300'>
+            <nav  className='flex justify-between items-center p-2 max-md:p-3 relative z-300'>
                 <div className='logo'>
+                        
                     <NavLinks to='/' className="text-3xl font-bold text-gray-800">EduHub</NavLinks>
                 </div>
 
@@ -51,19 +53,16 @@ const Navbar = () => {
                          rounded-md hover:bg-gray-100 transition-colors">Login</button>
                                 </NavLinks>
 
-                                <NavLinks to='authenticate/register'>
-                                    <button className="px-4 py-2 cursor-pointer bg-blue-500 text-white rounded-md
-                         hover:bg-blue-600 transition-colors">Register</button>
-                                </NavLinks>
+
                             </div>
                     }
                     <div className=" flex items-center space-x-4">
-                       
+
                         {
-                            user ? <div>
+                            user && <div>
 
                                 {
-                                    user ? <Link to='/userProfile'>
+                                    user && <Link to='/userProfile'>
                                         <div
                                             onClick={handleUser}
                                             className="w-10 h-10 cursor-pointer flex justify-center items-center rounded-full bg-gray-200 overflow-hidden"
@@ -77,21 +76,17 @@ const Navbar = () => {
                                         </div>
 
                                     </Link>
-                                        :
-                                        <FaUser className='text-2xl' />
+                                        
                                 }
 
 
-                            </div> : <div>
-                                <div onClick={handleUser} className="w-10 cursor-pointer h-10 flex justify-center items-center rounded-full bg-gray-200 bg-cover bg-center" >
-                                    <FaUser className='text-2xl' />
-                                </div>
-                            </div>
+                            </div> 
                         }
                     </div>
                     <button onClick={toggleMenu} className='flex md:hidden'>
                         <IoMdMenu className='cursor-pointer text-3xl' />
                     </button>
+                    <ThemeToggleButton></ThemeToggleButton>
 
                 </div>
 
@@ -113,9 +108,7 @@ const Navbar = () => {
                          text-gray-800 border border-gray-300 rounded-md hover:bg-gray-100
                           transition-colors">Login</button></Link>
 
-                                    <Link to='/authenticate/register' className='w-full'><button className="px-4 py-2 w-full cursor-pointer
-                         bg-blue-500 text-white rounded-md hover:bg-blue-600
-                          transition-colors">Register</button></Link>
+
                                 </div>
                             </div>
                     }

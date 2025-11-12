@@ -9,5 +9,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* 🌑 Dark mode overrides */
+html.dark {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
 
+/* 🧠 Apply globally */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
 
+/* Optional: make sure all elements inherit the color properly */
+* {
+  color: inherit;
+  background-color: transparent;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
