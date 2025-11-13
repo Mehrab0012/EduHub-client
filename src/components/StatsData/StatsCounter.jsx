@@ -51,11 +51,11 @@ export default function StatsCounter() {
           transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
           className="text-center"
         >
-          <div className="text-white text-3xl mb-1">
+          <div className=" text-3xl mb-1">
             {Math.ceil(counts[index]).toLocaleString()}
             {stat.suffix}
           </div>
-          <div className="text-white/60 text-sm">{stat.label}</div>
+          <div className=" text-sm">{stat.label}</div>
         </motion.div>
       ))}
     </motion.div>

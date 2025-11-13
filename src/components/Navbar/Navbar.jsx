@@ -17,7 +17,7 @@ const Navbar = () => {
 
     const NavItems = <>
         <NavLinks to='/' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Home</NavLinks>
-        <NavLinks to='/products' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Products</NavLinks>
+        <NavLinks to='/products' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black '}>Products</NavLinks>
         <NavLinks to='/aboutUs' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>About Us</NavLinks>
     </>;
 
@@ -29,7 +29,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav  className='flex justify-between items-center p-2 max-md:p-3 relative z-300'>
+            <nav  className='max-w-7xl sticky py-5 m-auto flex justify-between items-center p-2 max-md:p-3  z-300'>
                 <div className='logo'>
                         
                     <NavLinks to='/' className="text-3xl font-bold text-gray-800">EduHub</NavLinks>
@@ -40,7 +40,9 @@ const Navbar = () => {
                         {NavItems}
                     </ul>
                 </div>
+                
                 <div className="  flex items-center justify-center gap-5">
+                    <Link to='/addCourse'><button className='bg-blue-500 hover:bg-blue-700  cursor-pointer py-2 px-3  text-white rounded-md'>Add Course</button></Link>
                     {
                         user ? <div>
                             <button onClick={handleSignOut} className="px-4 py-2 max-md:hidden cursor-pointer bg-blue-500 text-white rounded-md

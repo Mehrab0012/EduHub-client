@@ -8,6 +8,7 @@ import UserDetails from "../pages/UserDetails";
 import AddCourse from "../pages/AddCourse";
 import SignIn from "../pages/SignIn";
 import Register from "../pages/Register";
+import PrivateRoute from "../provider/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
             {
                 index:true,
                 Component: Home,
+                loader: ()=>fetch('http://localhost:3000/courses')
             },
             {
                 path:'authenticate',
@@ -46,7 +48,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'addCourse',
-                Component: AddCourse,
+                element: <PrivateRoute>
+                    <AddCourse></AddCourse>
+                </PrivateRoute>
             }
 
         ]

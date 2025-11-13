@@ -24,7 +24,7 @@ const contactInfo = [
 ];
     return (
         <div>
-             <footer className="w-full bg-[#0f1419] border-t border-[#243647]">
+             <footer className="w-full bg-gray-100 dark:bg-[#0f1419] border-t border-gray-200 dark:border-[#243647]">
       <div className="max-w-[960px] mx-auto px-6 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -35,13 +35,13 @@ const contactInfo = [
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-white mb-4">EduHub</h3>
-            <p className="text-[#91adc9] text-sm mb-4">
+            <h3 className="text-gray-800 dark:text-white mb-4">EduHub</h3>
+            <p className="text-gray-600 dark:text-[#91adc9] text-sm mb-4">
               Empowering learners worldwide with high-quality online education.
             </p>
             <div className="space-y-2">
               {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-[#91adc9] text-sm">
+                <div key={index} className="flex items-center gap-2 text-gray-600 dark:text-[#91adc9] text-sm">
                   <item.icon className="w-4 h-4" />
                   <span>{item.text}</span>
                 </div>
@@ -56,13 +56,13 @@ const contactInfo = [
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="text-white mb-4">Quick Links</h4>
+            <h4 className="text-gray-800 dark:text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.label}>
                   <motion.a
                     href={link.href}
-                    className="text-[#91adc9] hover:text-white transition-colors text-sm inline-block"
+                    className="text-gray-600 dark:text-[#91adc9] hover:text-gray-800 dark:hover:text-white transition-colors text-sm inline-block"
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -80,15 +80,15 @@ const contactInfo = [
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-white mb-4">Stay Updated</h4>
-            <p className="text-[#91adc9] text-sm mb-4">
+            <h4 className="text-gray-800 dark:text-white mb-4">Stay Updated</h4>
+            <p className="text-gray-600 dark:text-[#91adc9] text-sm mb-4">
               Subscribe to our newsletter for the latest courses and updates.
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-[#243647] text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-[#1280ed] transition-all text-sm"
+                className="flex-1 bg-gray-200 dark:bg-[#243647] text-gray-800 dark:text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-[#1280ed] transition-all text-sm"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -114,7 +114,7 @@ const contactInfo = [
               key={social.label}
               href={social.href}
               aria-label={social.label}
-              className="w-10 h-10 bg-[#243647] rounded-lg flex items-center justify-center text-[#91adc9] hover:bg-[#1280ed] hover:text-white transition-all"
+              className="w-10 h-10 bg-gray-200 dark:bg-[#243647] rounded-lg flex items-center justify-center text-gray-600 dark:text-[#91adc9] hover:bg-[#1280ed] hover:text-white transition-all"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -129,9 +129,9 @@ const contactInfo = [
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-8 border-t border-[#243647] text-center"
+          className="pt-8 border-t border-gray-200 dark:border-[#243647] text-center"
         >
-          <p className="text-[#91adc9] text-sm">
+          <p className="text-gray-600 dark:text-[#91adc9] text-sm">
             © 2024 EduHub. All rights reserved.
           </p>
         </motion.div>

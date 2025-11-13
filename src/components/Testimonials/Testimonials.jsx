@@ -2,13 +2,13 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Star, Heart, Smile } from "lucide-react"; // example icons
 
-// 🧩 Card Component
+
 function TestimonialCard({ icon: Icon, name, feedback, color }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <motion.div
-            className="relative bg-[#1a2633] border border-[#334d66] rounded-xl p-6 overflow-hidden group cursor-pointer"
+            className="relative bg-gray-100 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl p-6 overflow-hidden group cursor-pointer"
             whileHover={{ y: -5, borderColor: "#1280ed" }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
@@ -29,7 +29,7 @@ function TestimonialCard({ icon: Icon, name, feedback, color }) {
                 transition={{ duration: 1 }}
             >
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${color} relative`}>
-                    <Icon className="w-6 h-6 text-white" />
+                    <Icon className="w-6 h-6 " />
 
                     {/* Pulse Animation */}
                     {isHovered && (
@@ -51,14 +51,14 @@ function TestimonialCard({ icon: Icon, name, feedback, color }) {
             {/* Content */}
             <div className="relative space-y-2">
                 <motion.h3
-                    className="text-white font-semibold group-hover:text-[#1280ed] transition-colors"
+                    className="text-gray-800 dark:text-white font-semibold group-hover:text-[#1280ed] transition-colors"
                     animate={{ x: isHovered ? 5 : 0 }}
                     transition={{ duration: 0.2 }}
                 >
                     {name}
                 </motion.h3>
                 <motion.p
-                    className="text-[#91adc9] text-sm"
+                    className="text-gray-600 dark:text-[#91adc9] text-sm"
                     animate={{ x: isHovered ? 5 : 0 }}
                     transition={{ duration: 0.2, delay: 0.05 }}
                 >
@@ -113,8 +113,8 @@ export default function Testimonials() {
     ];
 
     return (
-        <section className="w-full py-20 bg-[#0f1419]">
-            <div className="max-w-[960px] mx-auto px-4">
+        <section className="w-full py-20 ">
+            <div className="max-w-7xl mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -122,8 +122,8 @@ export default function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl font-bold mb-4 text-white">What Our Learners Say</h2>
-                    <p className="text-[#91adc9] max-w-2xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-4 light:text-gray-800">What Our Learners Say</h2>
+                    <p className="text-gray-600 dark:text-[#91adc9] max-w-2xl mx-auto">
                         Hear from students who transformed their careers through EduHub’s expert-led courses.
                     </p>
                 </motion.div>

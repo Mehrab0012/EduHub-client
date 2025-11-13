@@ -7,12 +7,18 @@ import banner3 from '/banner3.png'
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { motion } from 'motion/react';
 import StatsCounter from '../components/StatsData/StatsCounter';
+import { useLoaderData } from 'react-router';
+import CourseCard from '../components/CourseCard/CourseCard';
 
 const Home = () => {
+    const data = useLoaderData();
+    const homeData = data.slice(0,4);
+
+    
     const { theme } = useTheme();
     return (
         <div className=''>
-            <div className='grid grid-cols-[60%_40%] mt-20 items-center'>
+            <div className='max-w-7xl m-auto grid grid-cols-[60%_40%] mt-20 items-center'>
                 <div>
                     {
                         theme == "dark" ? <img className='rounded-3xl' src={banner3} /> :
@@ -45,10 +51,10 @@ const Home = () => {
                                     className="inline-flex items-center gap-2 bg-[#1280ed]/20 border border-[#1280ed]/30 backdrop-blur-sm rounded-full px-4 py-2"
                                 >
                                     <div className="w-2 h-2 bg-[#1280ed] rounded-full animate-pulse" />
-                                    <span className="text-white/90 text-sm">Start Learning Today</span>
+                                    <span className=" text-sm">Start Learning Today</span>
                                 </motion.div>
 
-                                <h1 className="text-white tracking-tight text-4xl">
+                                <h1 className=" tracking-tight text-4xl">
                                     Unlock Your Potential with EduHub
                                 </h1>
 
@@ -80,6 +86,7 @@ const Home = () => {
 
                                 </motion.div>
 
+
                                 {/* Stats */}
                                 <StatsCounter></StatsCounter>
                             </motion.div>
@@ -87,7 +94,14 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className=' '>
+
+            <div className='max-w-7xl m-auto grid grid-cols-4 gap-5 mt-20  justify-between items-center'>      
+                    {
+                        homeData.map((details)=><CourseCard details={details}></CourseCard>)
+                    }
+
+            </div>
+            <div className='py-10'>
                 <Testimonials></Testimonials>
             </div>
 
