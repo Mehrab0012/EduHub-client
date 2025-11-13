@@ -1,27 +1,49 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddCourse = () => {
+
+    const{user} = use(AuthContext);
+
     const handleAddCourse = (e) => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
-        const author = form.author.value;
+        const author = user.displaName;
         const category = form.category.value;
         const duration = form.duration.value;
         const price = form.price.value;
         const level = form.level.value;
         const image = form.image.value;
         const description = form.description.value;
-        const date = new Date().toISOString().split('T')[0]; // Automatically add the date
+        const date = new Date().toISOString().split('T')[0]; 
 
         const newCourse = { title, author, category, duration, price, level, image, description, date };
-        console.log(newCourse);
+        
+        fetch('http://localhost:3000/courses',{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newCourse)
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            form.reset();
+            toast.success("Course Added Successfully")
+        })
+        .catch(err=>{
+            console.log(err)
+        })
 
 
     };
 
     return (
+
         <div className="min-h-screen bg-base-200 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+          <ToastContainer />
             <div className="max-w-4xl w-full bg-white rounded-lg shadow-xl p-8 space-y-8">
                 <h2 className="text-3xl font-bold text-center text-gray-800">Add a New Course</h2>
                 <form onSubmit={handleAddCourse} className="space-y-6">
@@ -32,11 +54,6 @@ const AddCourse = () => {
                             <input type="text" name="title" id="title" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
-                        {/* Author */}
-                        <div>
-                            <label htmlFor="author" className="block text-sm font-medium text-gray-700">Author</label>
-                            <input type="text" name="author" id="author" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                        </div>
 
                         {/* Category */}
                         <div>
@@ -48,6 +65,7 @@ const AddCourse = () => {
                                 <option value="Business">Business</option>
                                 <option value="Design">Design</option>
                                 <option value="Marketing">Marketing</option>
+                                <option value="Marketing">Machine Learning</option>
                             </select>
                         </div>
 
