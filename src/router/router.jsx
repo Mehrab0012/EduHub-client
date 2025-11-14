@@ -10,6 +10,7 @@ import SignIn from "../pages/SignIn";
 import Register from "../pages/Register";
 import PrivateRoute from "../provider/PrivateRoute";
 import MyCourses from "../pages/MyCourses";
+import UpdateCourse from "../pages/UpdateCourse";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,13 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyCourses></MyCourses>
                 </PrivateRoute>
+            },
+            {
+                path: 'updateCourse/:id',
+                element: <PrivateRoute>
+                    <UpdateCourse></UpdateCourse>
+                </PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:3000/courses/${params.id}`)
             },
             {
                 path: 'courses/:id',
