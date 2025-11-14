@@ -1,4 +1,5 @@
 import Testimonials from '../components/Testimonials/Testimonials';
+import TeacherReviews from '../components/TeacherReviews/TeacherReviews';
 import CategoryCard from '../components/CategoryCard/CategoryCard';
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
 import banner2 from '/banner2.png'
@@ -15,7 +16,7 @@ const Home = () => {
 
     return (
         <div className=''>
-            <div className='max-w-7xl m-auto grid grid-cols-[60%_40%] mt-20 items-center'>
+            <div className='max-w-7xl m-auto grid grid-cols-1 md:grid-cols-[60%_40%] mt-20 items-center'>
                 <div>
                 
                     <img className='rounded-3xl' src={banner2} />
@@ -90,7 +91,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='max-w-7xl m-auto grid grid-cols-2 px-3 lg:px-0 lg:grid-cols-3  gap-5 mt-20  justify-between items-center'>      
+            <div className='max-w-7xl m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-20  justify-between items-center'>      
                     {
                         homeData.map((details)=><Link key={details.id} to={`/courses/${details._id}`}><CourseCard details={details}></CourseCard></Link>)
                     }
@@ -99,7 +100,9 @@ const Home = () => {
             <div className='py-10'>
                 <Testimonials></Testimonials>
             </div>
-
+            <div className='py-10'>
+                <TeacherReviews></TeacherReviews>
+            </div>
         </div>
     );
 };

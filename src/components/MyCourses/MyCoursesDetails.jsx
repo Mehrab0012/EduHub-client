@@ -73,7 +73,7 @@ const MyCoursesDetails = ({ details }) => {
 
                 <div className='flex gap-4 mt-5 mb-5'>
                     <button onClick={handleClick} className='w-full text-white py-2 px-3 rounded-md bg-blue-500 hover:bg-blue-700 cursor-pointer hover:text-red-800'>Delete</button>
-                    <Link className='text-white w-full py-2 px-3 rounded-md bg-blue-500 hover:bg-blue-700 cursor-pointer' to={`/updateCourse/${details._id}`}><button className='w-full cursor-pointer'>Update</button></Link>
+                    <Link className='text-white w-full py-2 px-3 rounded-md bg-blue-500 hover:bg-blue-700 cursor-pointer' to={`/dashboard/updateCourse/${details._id}`}><button className='w-full cursor-pointer'>Update</button></Link>
 
                 </div>
             </div>

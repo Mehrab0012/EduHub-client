@@ -16,8 +16,8 @@ const Navbar = () => {
 
     const NavItems = <>
         <NavLinks to='/' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Home</NavLinks>
-        <NavLinks to='/courses' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black '}>All Courses</NavLinks>
-        <NavLinks to='/myCourses' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>My Courses</NavLinks>
+        <NavLinks to='/courses' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Courses</NavLinks>
+        <NavLinks to='/dashboard' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Dashboard</NavLinks>
     </>;
 
     const handleUser = () => {
@@ -41,10 +41,7 @@ const Navbar = () => {
                 </div>
                 
                 <div className="  flex items-center justify-center gap-5">
-                    {
-                        user && <Link to='/addCourse'><button className='bg-blue-500 hover:bg-blue-700  cursor-pointer py-2 px-3  text-white rounded-md'>Add Course</button></Link>
 
-                    }
                     {
                         user ? <div>
                             <button onClick={handleSignOut} className="px-4 py-2 max-md:hidden cursor-pointer bg-blue-500 text-white rounded-md
@@ -66,7 +63,7 @@ const Navbar = () => {
                             user && <div>
 
                                 {
-                                    user && <Link to='/userProfile'>
+                                    user &&
                                         <div
                                             onClick={handleUser}
                                             className="w-10 h-10 cursor-pointer flex justify-center items-center rounded-full bg-gray-200 overflow-hidden"
@@ -77,10 +74,7 @@ const Navbar = () => {
                                                 className="w-full h-full object-cover"
                                                 alt="User"
                                             />
-                                        </div>
-
-                                    </Link>
-                                        
+                                        </div>        
                                 }
 
 

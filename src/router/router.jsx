@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import HomeLayouts from "../layouts/HomeLayouts";
 import Home from "../pages/Home";
 import AuthenticateLayout from "../layouts/AuthenticateLayout";
@@ -11,6 +11,8 @@ import Register from "../pages/Register";
 import PrivateRoute from "../provider/PrivateRoute";
 import MyCourses from "../pages/MyCourses";
 import UpdateCourse from "../pages/UpdateCourse";
+import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -36,23 +38,12 @@ const router = createBrowserRouter([
                     }
                 ]
             },
+
+
             {
                 path: 'courses',
                 Component: Courses,
                 loader:()=>fetch('http://localhost:3000/courses') ,
-            },
-            {
-                path: 'myCourses',
-                element: <PrivateRoute>
-                    <MyCourses></MyCourses>
-                </PrivateRoute>
-            },
-            {
-                path: 'updateCourse/:id',
-                element: <PrivateRoute>
-                    <UpdateCourse></UpdateCourse>
-                </PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:3000/courses/${params.id}`)
             },
             {
                 path: 'courses/:id',
@@ -66,13 +57,37 @@ const router = createBrowserRouter([
                 path: 'userDetails',
                 Component: UserDetails,
             },
+            
+
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                index: true,
+                element: <Navigate to="myCourses" />
+            },
+            {
+                path: 'myCourses',
+                element: <PrivateRoute>
+                    <MyCourses></MyCourses>
+                </PrivateRoute>
+            },
             {
                 path: 'addCourse',
                 element: <PrivateRoute>
                     <AddCourse></AddCourse>
                 </PrivateRoute>
-            }
-
+            },
+            {
+                path: 'updateCourse/:id',
+                element: <PrivateRoute>
+                    <UpdateCourse></UpdateCourse>
+                </PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:3000/courses/${params.id}`)
+            },
         ]
     }
 ])

@@ -26,7 +26,7 @@ const MyCourses = () => {
 
     return (
         <div>
-            <div className='mt-20 mb-20 max-w-7xl m-auto grid grid-cols-2 gap-5 max-md:px-2 lg:grid-cols-4'>
+            <div className='mt-3 mb-20 max-w-7xl m-auto grid grid-cols-2 gap-5 max-md:px-2 lg:grid-cols-4'>
                 {
                      data.map((details)=><MyCoursesDetails key={details._id}  details={details}></MyCoursesDetails>)
                 }

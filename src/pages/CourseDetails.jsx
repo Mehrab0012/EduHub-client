@@ -1,78 +1,130 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
-import { FaStar, FaUserFriends, FaClock, FaLayerGroup, FaCertificate, FaInfinity } from 'react-icons/fa';
+import { FaStar, FaUserFriends, FaClock, FaLayerGroup, FaCertificate, FaInfinity, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { MdLanguage } from 'react-icons/md';
 
 const CourseDetails = () => {
     const data = useLoaderData();
-    const { author, category, date, description, duration, image, level, price, rating, students, title } = data.result;
+    const { author, category, date, description, image, level, price, rating, students, title, duration } = data.result;
+
+    // Sample data for what you'll learn and requirements
+    const learningObjectives = [
+        "Master the fundamentals of this technology.",
+        "Build real-world applications from scratch.",
+        "Understand advanced concepts and best practices.",
+        "Prepare for industry certification exams."
+    ];
+
+    const requirements = [
+        "A computer with internet access.",
+        "Basic understanding of web development concepts.",
+        "No prior experience with the specific technology is required."
+    ];
 
     return (
-        <div className="antialiased text-gray-900 dark:text-gray-100">
-            {/* Top Banner */}
-            <div className="bg-gray-800 text-white py-12">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className="text-sm font-semibold text-gray-400 mb-2">
-                        Development &gt; {category}
-                    </p>
-                    <h1 className="text-3xl md:text-4xl font-bold mb-3">{title}</h1>
-                    {/* Short description could go here if available */}
-                    <div className="flex flex-wrap items-center text-sm text-gray-300 space-x-4">
-                        <div className="flex items-center space-x-1">
-                            <span className="text-yellow-400">{rating}</span>
-                            <FaStar className="text-yellow-400" />
-                            <span>({students} ratings)</span>
-                        </div>
-                        <span>Created by {author}</span>
-                        <div className="flex items-center space-x-1">
-                            <FaClock />
-                            <span>Last updated {new Date(date).toLocaleDateString()}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                            <MdLanguage />
-                            <span>English</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="max-w-6xl mx-auto justify-center px-4 sm:px-6 lg:px-8 py-8">
-                <div className="flex flex-col justify-center">
-                    {/* Right Sticky Card */}
-                    <div className="w-full lg:pl-8 mb-8 lg:mb-0">
-                        <div className="flex justify-center items-center">
-                            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-                                <img src={image} alt={title} className="w-full h-auto object-cover" />
-                                <div className="p-6">
-                                    <p className="text-3xl font-bold mb-4">${price}</p>
-                                    <button className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
-                                        Enroll Now
-                                    </button>
-                                    <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-3">30-Day Money-Back Guarantee</p>
-                                    <div className="mt-6">
-                                        <h3 className="font-bold text-lg mb-3">This course includes:</h3>
-                                        <ul className="space-y-2 text-sm">
-                                            <li className="flex items-center"><FaClock className="mr-3" />{duration} on-demand video</li>
-                                            <li className="flex items-center"><FaLayerGroup className="mr-3" />Content level: {level}</li>
-                                            <li className="flex items-center"><FaInfinity className="mr-3" />Full lifetime access</li>
-                                            <li className="flex items-center"><FaCertificate className="mr-3" />Certificate of completion</li>
-                                        </ul>
+        <div className=" ">
+            {/* --- Hero Section --- */}
+            <header className="  pt-16 pb-24">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+                        <div className="lg:col-span-2">
+                            <p className="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-2">{category}</p>
+                            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{title}</h1>
+                            <p className="text-lg text-black mb-6">A comprehensive guide to mastering the concepts for all skill levels.</p>
+                            <div className="flex flex-wrap items-center text-sm text-black gap-x-6 gap-y-2">
+                                <div className="flex items-center gap-2">
+                                    <span className="font-bold text-yellow-400">{rating}</span>
+                                    <div className="flex">
+                                        {[...Array(5)].map((_, i) => (
+                                            <FaStar key={i} className={i < Math.round(rating) ? 'text-yellow-400' : 'text-gray-500'} />
+                                        ))}
                                     </div>
+                                    <span className="text-gray-400">({students} ratings)</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <FaUserFriends />
+                                    <span>Created by <span className="font-semibold">{author}</span></span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <MdLanguage />
+                                    <span>English</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </header>
 
-                    {/* Left Content */}
-                    <div className="lg:w-full mt-20 text-center mb-30 lg: ">
-                        <div className="bg-white  dark:bg-gray-800 shadow-lg rounded-lg p-6">
-                            <h2 className="text-2xl font-bold mb-4">Description</h2>
-                            <p className="text-base leading-relaxed whitespace-pre-line">{description}</p>
+            {/* --- Main Content --- */}
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16">
+                <div className="flex max-lg:flex-col-reverse  lg:grid lg:grid-cols-3 lg:gap-8">
+                    {/* --- Left Column: Course Info --- */}
+                    <div className="lg:col-span-2 max-lg:mt-10 space-y-8">
+                        {/* What you'll learn */}
+                        <div className="bg-white  shadow-xl rounded-lg border border-gray-200  p-8">
+                            <h2 className="text-2xl font-bold mb-6">What you'll learn</h2>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                {learningObjectives.map((objective, index) => (
+                                    <li key={index} className="flex items-start">
+                                        <FaCheckCircle className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                                        <span>{objective}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Description */}
+                        <div className="bg-white  shadow-xl rounded-lg p-8">
+                            <h2 className="text-2xl text-black font-bold mb-4">Description</h2>
+                            <div className="prose dark:prose-invert max-w-none text-black whitespace-pre-line">
+                                {description}
+                            </div>
+                        </div>
+
+                         {/* Requirements */}
+                         <div className="shadow-xl rounded-lg p-8">
+                            <h2 className="text-2xl font-bold mb-4">Requirements</h2>
+                            <ul className="space-y-3">
+                                {requirements.map((req, index) => (
+                                     <li key={index} className="flex items-start">
+                                         <FaExclamationCircle className="text-red-500 mt-1 mr-3 flex-shrink-0" />
+                                         <span>{req}</span>
+                                     </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* --- Right Column: Sticky Card --- */}
+                    <div className="mt-8 lg:mt-0 ">
+                        <div className="lg:sticky lg:top-8">
+                            <div className="sm:w-1/2 m-auto lg:w-full shadow-xl rounded-lg overflow-hidden">
+                                <img src={image} alt={title} className="w-full h-48 object-cover" />
+                                <div className="p-6">
+                                    <p className="text-4xl font-bold mb-4">${price}</p>
+                                    <button className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-lg">
+                                        Enroll Now
+                                    </button>
+                                     
+                                    <p className="text-xs text-center text-gray-500 mt-4">30-Day Money-Back Guarantee</p>
+                                </div>
+                                <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+                                    <h3 className="font-bold text-lg mb-4">This course includes:</h3>
+                                    <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                                        <li className="flex items-center"><FaClock className="mr-3 text-blue-500" />{duration} on-demand video</li>
+                                        <li className="flex items-center"><FaLayerGroup className="mr-3 text-blue-500" />Content level: {level}</li>
+                                        <li className="flex items-center"><FaInfinity className="mr-3 text-blue-500" />Full lifetime access</li>
+                                        <li className="flex items-center"><FaCertificate className="mr-3 text-blue-500" />Certificate of completion</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
+            <footer className="py-12">
+                {/* Footer content can go here */}
+            </footer>
         </div>
     );
 };
