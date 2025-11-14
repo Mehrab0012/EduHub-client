@@ -1,4 +1,3 @@
-import React, { use } from 'react';
 import Testimonials from '../components/Testimonials/Testimonials';
 import CategoryCard from '../components/CategoryCard/CategoryCard';
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
@@ -7,12 +6,12 @@ import banner3 from '/banner3.png'
 import { useTheme } from '../ThemeContext/ThemeContext';
 import { motion } from 'motion/react';
 import StatsCounter from '../components/StatsData/StatsCounter';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import CourseCard from '../components/CourseCard/CourseCard';
 
 const Home = () => {
     const data = useLoaderData();
-    const homeData = data.slice(0,4);
+    const homeData = data.slice(0,8);
 
     
     const { theme } = useTheme();
@@ -97,7 +96,7 @@ const Home = () => {
 
             <div className='max-w-7xl m-auto grid grid-cols-4 gap-5 mt-20  justify-between items-center'>      
                     {
-                        homeData.map((details)=><CourseCard details={details}></CourseCard>)
+                        homeData.map((details)=><Link key={details.id} to={`/courses/${details._id}`}><CourseCard details={details}></CourseCard></Link>)
                     }
 
             </div>

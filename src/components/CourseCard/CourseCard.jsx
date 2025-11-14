@@ -22,7 +22,7 @@ const CourseCard = ({ details }) => {
 
     return (
         <motion.div
-            className="bg-gray-100 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden cursor-pointer group shadow-lg"
+            className="bg-gray-100 flex justify-between flex-col gap-3 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden cursor-pointer group shadow-lg"
             whileHover={{ y: -5, borderColor: "#1280ed", boxShadow: "0 10px 20px rgba(18,128,237,0.4)" }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
@@ -50,7 +50,7 @@ const CourseCard = ({ details }) => {
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-[#90a4ae]">
                         <FaStar className="text-yellow-400" />
                         <span>{rating}</span>
-                        <span>• {students.toLocaleString()} students</span>
+                        <span>• {students} students</span>
                     </div>
                     <span className="text-gray-800 dark:text-white font-semibold text-lg">${price}</span>
                 </div>

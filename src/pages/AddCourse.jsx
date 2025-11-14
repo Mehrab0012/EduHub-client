@@ -28,8 +28,7 @@ const AddCourse = () => {
             },
             body: JSON.stringify(newCourse)
         }).then(res=>res.json())
-        .then(data=>{
-            console.log(data)
+        .then(()=>{
             form.reset();
             toast.success("Course Added Successfully")
         })

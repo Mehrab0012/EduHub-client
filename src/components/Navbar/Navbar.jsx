@@ -17,8 +17,8 @@ const Navbar = () => {
 
     const NavItems = <>
         <NavLinks to='/' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>Home</NavLinks>
-        <NavLinks to='/products' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black '}>Products</NavLinks>
-        <NavLinks to='/aboutUs' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>About Us</NavLinks>
+        <NavLinks to='/courses' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black '}>All Courses</NavLinks>
+        <NavLinks to='/myCourses' className={({ isActive }) => isActive ? 'text-blue-500' : 'hover:text-blue-500 transition-colors text-black'}>My Courses</NavLinks>
     </>;
 
     const handleUser = () => {
