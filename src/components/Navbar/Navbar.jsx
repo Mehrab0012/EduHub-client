@@ -3,7 +3,6 @@ import NavLinks from '../NavLinks/NavLinks';
 import { IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
-import ThemeToggleButton from '../../ThemeContext/ThemeToggleButton';
 
 
 const Navbar = () => {
@@ -42,7 +41,10 @@ const Navbar = () => {
                 </div>
                 
                 <div className="  flex items-center justify-center gap-5">
-                    <Link to='/addCourse'><button className='bg-blue-500 hover:bg-blue-700  cursor-pointer py-2 px-3  text-white rounded-md'>Add Course</button></Link>
+                    {
+                        user && <Link to='/addCourse'><button className='bg-blue-500 hover:bg-blue-700  cursor-pointer py-2 px-3  text-white rounded-md'>Add Course</button></Link>
+
+                    }
                     {
                         user ? <div>
                             <button onClick={handleSignOut} className="px-4 py-2 max-md:hidden cursor-pointer bg-blue-500 text-white rounded-md
@@ -88,7 +90,6 @@ const Navbar = () => {
                     <button onClick={toggleMenu} className='flex md:hidden'>
                         <IoMdMenu className='cursor-pointer text-3xl' />
                     </button>
-                    <ThemeToggleButton></ThemeToggleButton>
 
                 </div>
 

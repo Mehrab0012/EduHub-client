@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             {
                 index:true,
                 Component: Home,
-                loader: ()=>fetch('http://localhost:3000/courses')
+                loader: ()=>fetch('http://localhost:3000/latest-courses')
             },
             {
                 path:'authenticate',

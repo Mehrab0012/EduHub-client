@@ -3,12 +3,12 @@ import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import CourseCard from '../components/CourseCard/CourseCard';
 import { Link } from 'react-router';
+import MyCoursesDetails from '../components/MyCourses/MyCoursesDetails';
 
 const MyCourses = () => {
     const { user } = use(AuthContext);
     const [data, setData] = useState([]);
 
-    console.log(data)
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -28,7 +28,7 @@ const MyCourses = () => {
         <div>
             <div className='mt-20 mb-20 max-w-7xl m-auto grid grid-cols-2 gap-5 max-md:px-2 lg:grid-cols-4'>
                 {
-                     data.map((details)=><Link to={`/updateCourse/${details._id}`}><CourseCard details={details}></CourseCard></Link>)
+                     data.map((details)=><MyCoursesDetails key={details._id}  details={details}></MyCoursesDetails>)
                 }
             </div>
         </div>

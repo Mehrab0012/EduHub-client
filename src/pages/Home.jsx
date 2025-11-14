@@ -2,28 +2,24 @@ import Testimonials from '../components/Testimonials/Testimonials';
 import CategoryCard from '../components/CategoryCard/CategoryCard';
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
 import banner2 from '/banner2.png'
-import banner3 from '/banner3.png'
-import { useTheme } from '../ThemeContext/ThemeContext';
 import { motion } from 'motion/react';
 import StatsCounter from '../components/StatsData/StatsCounter';
 import { Link, useLoaderData } from 'react-router';
 import CourseCard from '../components/CourseCard/CourseCard';
 
 const Home = () => {
-    const data = useLoaderData();
-    const homeData = data.slice(0,8);
+    const homeData = useLoaderData();
+
 
     
-    const { theme } = useTheme();
+
     return (
         <div className=''>
             <div className='max-w-7xl m-auto grid grid-cols-[60%_40%] mt-20 items-center'>
                 <div>
-                    {
-                        theme == "dark" ? <img className='rounded-3xl' src={banner3} /> :
-                            <img className='rounded-3xl' src={banner2} />
-                    }
-
+                
+                    <img className='rounded-3xl' src={banner2} />
+                
                 </div>
                 <div>
 
@@ -94,7 +90,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='max-w-7xl m-auto grid grid-cols-4 gap-5 mt-20  justify-between items-center'>      
+            <div className='max-w-7xl m-auto grid grid-cols-2 px-3 lg:px-0 lg:grid-cols-3  gap-5 mt-20  justify-between items-center'>      
                     {
                         homeData.map((details)=><Link key={details.id} to={`/courses/${details._id}`}><CourseCard details={details}></CourseCard></Link>)
                     }

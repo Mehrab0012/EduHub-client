@@ -159,11 +159,9 @@ const Register = () => {
                         </div>
                     </div>
                     <ToastContainer></ToastContainer>
-                    <p className="text-primary mt-5 text-sm font-medium leading-normal text-right underline cursor-pointer hover:text-primary/80">
-                        Forgot Password?
-                    </p>
+                    
                     <button type='submit' className="w-full bg-primary transform duration-100 active:scale-95
-                    text-white font-bold py-3 rounded-lg hover:bg-primary/90 transition-all mt-2 cursor-pointer">
+                     font-bold text-white py-3 bg-blue-500 rounded-lg hover:bg-primary/90 transition-all mt-2 cursor-pointer">
                         Register
                     </button>
                 </form>
