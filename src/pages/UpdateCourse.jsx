@@ -8,34 +8,30 @@ const UpdateCourse = () => {
     const{user} = use(AuthContext);
 
     const course = useLoaderData();
-    
+
     const handleAddCourse = (e) => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
-        const author = user.displaName;
-        const email = user.email;
         const category = form.category.value;
         const duration = form.duration.value;
         const price = form.price.value;
         const level = form.level.value;
         const image = form.image.value;
         const description = form.description.value;
-        const date = new Date().toISOString().split('T')[0]; 
 
-        const newCourse = { title, author,email, category, duration, price, level, image, description, date };
+        const update = { title, category, duration, price, level, image, description,};
         
-        fetch('http://localhost:3000/courses',{
-            method: "POST",
+        fetch(`http://localhost:3000/courses/${course.result._id}`,{
+            method: "PUT",
             headers:{
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newCourse)
+            body: JSON.stringify(update)
         }).then(res=>res.json())
         .then(()=>{
             
-            toast.success("Course Added Successfully")
-            form.reset();
+            toast.success("Course Updated Successfully")
         })
         .catch(err=>{
             console.log(err)
