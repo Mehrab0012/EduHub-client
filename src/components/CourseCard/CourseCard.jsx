@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa'; // for rating stars
+import { Link } from 'react-router';
 
 const CourseCard = ({ details }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     // Destructure the details object
     const {
+        _id,
         title,
         author,
         category,
-        date,
         description,
         duration,
         level,
@@ -22,7 +23,7 @@ const CourseCard = ({ details }) => {
 
     return (
         <motion.div
-            className="bg-gray-100 flex justify-between flex-col gap-3 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden cursor-pointer group shadow-lg"
+            className="bg-gray-100 px-3 py-5 flex justify-between flex-col gap-3 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden  group shadow-lg"
             whileHover={{ y: -5, borderColor: "#1280ed", boxShadow: "0 10px 20px rgba(18,128,237,0.4)" }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
@@ -40,9 +41,9 @@ const CourseCard = ({ details }) => {
             <div className="p-6 flex flex-col justify-between h-full">
         
                 <div>
-                    <h3 className="text-gray-800 dark:text-white text-lg font-semibold line-clamp-2 mb-2">{title}</h3>
+                    <h3 className="text-gray-800 dark:text-white text-lg font-semibold max-lg:line-clamp-1 line-clamp-2 mb-2">{title}</h3>
                     <p className="text-gray-600 dark:text-[#90a4ae] text-sm mb-2">{category} • {level}</p>
-                    <p className="text-gray-700 dark:text-[#cfd8e4] text-sm mb-4 line-clamp-3">{description}</p>
+                    <p className="text-gray-700 dark:text-[#cfd8e4] text-sm mb-4 line-clamp-2">{description}</p>
                 </div>
 
               
@@ -59,6 +60,9 @@ const CourseCard = ({ details }) => {
                 <div className="flex justify-between mt-4 text-gray-600 dark:text-[#90a4ae] text-xs">
                     <span>{author}</span>
                     <span>{duration}</span>
+                </div>
+                <div>
+                    <Link to={`/courses/${_id}`}><button className='text-white w-full bg-blue-500 rounded-xl mt-5 cursor-pointer py-2'>View Details</button></Link>
                 </div>
             </div>
         </motion.div>

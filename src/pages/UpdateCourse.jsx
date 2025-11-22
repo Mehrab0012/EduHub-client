@@ -1,13 +1,30 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
-import { useLoaderData } from 'react-router';
+import { useParams } from 'react-router';
+import Loader from '../components/Loader/Loader';
 
 const UpdateCourse = () => {
 
     const{user} = use(AuthContext);
+    const {id} = useParams();
+    const [course, setCourse] = useState([]);
+    const [loading, setLoading]= useState(true);
 
-    const course = useLoaderData();
+    useEffect(()=>{
+        fetch(`http://localhost:3000/courses/${id}`, {
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(res => res.json())
+            .then(data => {
+                console.log()
+                setCourse(data.result);
+                setLoading(false)
+            })
+
+    },[])
+
 
     const handleAddCourse = (e) => {
         e.preventDefault();
@@ -22,7 +39,7 @@ const UpdateCourse = () => {
 
         const update = { title, category, duration, price, level, image, description,};
         
-        fetch(`http://localhost:3000/courses/${course.result._id}`,{
+        fetch(`http://localhost:3000/courses/${course._id}`,{
             method: "PUT",
             headers:{
                 "Content-Type": "application/json",
@@ -39,7 +56,9 @@ const UpdateCourse = () => {
 
 
     };
-
+    if(loading){
+        return <Loader></Loader>
+    }
     return (
 
         <div className="min-h-screen bg-base-200 flex items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -51,14 +70,14 @@ const UpdateCourse = () => {
                         {/* Title */}
                         <div>
                             <label htmlFor="title" className="block text-sm font-medium text-gray-700">Course Title</label>
-                            <input defaultValue={course.result.title} type="text" name="title" id="title" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <input defaultValue={course.title} type="text" name="title" id="title" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
 
                         {/* Category */}
                         <div>
                             <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-                            <select defaultValue={course.result.category} name="category" id="category" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <select defaultValue={course.category} name="category" id="category" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     
                                 <option value="">Select a category</option>
                                 <option value="IT & Security">IT & Security</option>
@@ -73,19 +92,19 @@ const UpdateCourse = () => {
                         {/* Duration */}
                         <div>
                             <label htmlFor="duration" className="block text-sm font-medium text-gray-700">Duration (e.g., 10h 30m)</label>
-                            <input defaultValue={course.result.duration} type="text" name="duration" id="duration" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <input defaultValue={course.duration} type="text" name="duration" id="duration" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
                         {/* Price */}
                         <div>
                             <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price ($)</label>
-                            <input defaultValue={course.result.price} type="number" name="price" id="price" step="0.01" min="0" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <input defaultValue={course.price} type="number" name="price" id="price" step="0.01" min="0" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
                         {/* Level */}
                         <div>
                             <label htmlFor="level" className="block text-sm font-medium text-gray-700">Level</label>
-                            <select defaultValue={course.result.level}  name="level" id="level" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <select defaultValue={course.level}  name="level" id="level" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 <option value="">Select a level</option>
                                 <option value="Beginner">Beginner</option>
                                 <option value="Intermediate">Intermediate</option>
@@ -98,13 +117,13 @@ const UpdateCourse = () => {
                     {/* Image URL */}
                     <div>
                         <label htmlFor="image" className="block text-sm font-medium text-gray-700">Image URL</label>
-                        <input defaultValue={course.result.image}  type="url" name="image" id="image" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input defaultValue={course.image}  type="url" name="image" id="image" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
 
                     {/* Description */}
                     <div>
                         <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea defaultValue={course.result.description} name="description" id="description" rows="4" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        <textarea defaultValue={course.description} name="description" id="description" rows="4" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                     </div>
 
                     {/* Submit Button */}

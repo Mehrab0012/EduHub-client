@@ -12,7 +12,7 @@ const Courses = () => {
             <div>
                 <h2 className='text-4xl font-bold text-center pb-12'>All courses</h2>
             </div>
-            <div className='grid grid-cols-4 gap-5'>
+            <div className='grid max-md:p-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 {
                 data.map((details)=><Link key={details.id} to={`/courses/${details._id}`}><CourseCard details={details} ></CourseCard></Link>)
                 }       

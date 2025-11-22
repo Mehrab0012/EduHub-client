@@ -28,15 +28,6 @@ const Register = () => {
         const password = e.target.password.value;
 
 
-        if (!checkLength) {
-            return;
-        }
-        if (!checkUpperCase) {
-            return;
-        }
-        if (!checkLowerCase) {
-            return;
-        }
 
         createUser(email, password).then(res => {
             toast.success("Registration successful");

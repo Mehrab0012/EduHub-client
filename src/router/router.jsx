@@ -12,7 +12,7 @@ import PrivateRoute from "../provider/PrivateRoute";
 import MyCourses from "../pages/MyCourses";
 import UpdateCourse from "../pages/UpdateCourse";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
-import Dashboard from "../pages/Dashboard";
+import EnrolledCourses from "../pages/EnrolledCourses";
 
 const router = createBrowserRouter([
     {
@@ -43,14 +43,14 @@ const router = createBrowserRouter([
             {
                 path: 'courses',
                 Component: Courses,
-                loader:()=>fetch('http://localhost:3000/courses') ,
+                loader:()=>fetch('http://localhost:3000/courses' ) ,
             },
             {
                 path: 'courses/:id',
                 element: (<PrivateRoute>
                     <CourseDetails></CourseDetails>
                     </PrivateRoute>),
-                loader:({params})=> fetch(`http://localhost:3000/courses/${params.id}`)
+
 
             },
             {
@@ -86,8 +86,16 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdateCourse></UpdateCourse>
                 </PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:3000/courses/${params.id}`)
+
             },
+            {
+                path: 'enrolledCourses',
+                element: <PrivateRoute>
+                    <EnrolledCourses></EnrolledCourses>
+                </PrivateRoute>,
+                loader:()=>fetch('http://localhost:3000/enrolled' ) ,
+                
+            }
         ]
     }
 ])

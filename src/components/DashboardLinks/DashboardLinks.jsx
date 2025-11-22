@@ -19,7 +19,18 @@ const DashboardLinks = () => {
                             }
                         >
                             <BookOpen className="mr-3" />
-                            My Courses
+                            My Added Courses
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/dashboard/enrolledCourses"
+                            className={({ isActive }) =>
+                                `flex items-center p-2 rounded-lg ${isActive ? 'bg-gray-700' : ''}`
+                            }
+                        >
+                            <BookOpen className="mr-3" />
+                            My Enrolled Courses
                         </NavLink>
                     </li>
                     <li>
