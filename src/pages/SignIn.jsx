@@ -6,6 +6,7 @@ import { LuEye, LuEyeOff } from 'react-icons/lu';
 import { GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import styled from 'styled-components';
+import useTitle from '../hooks/useTitle';
 
 
 const SignIn = () => {
@@ -15,6 +16,7 @@ const SignIn = () => {
     const [show, setShow] = useState(false);
     const [passwordType, setPasswordType] = useState('password');
     const emailRef = useRef(null);
+    useTitle('Sign In');
     const showPassword = () => {
         setShow(prev => {
             const newState = !prev;

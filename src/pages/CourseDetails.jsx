@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import Loader from '../components/Loader/Loader';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import useTitle from '../hooks/useTitle';
 
 const CourseDetails = () => {
 
@@ -30,6 +31,7 @@ const CourseDetails = () => {
     }, [])
 
     const { author, category, date, description, image, level, price, rating, students, title, duration } = data;
+    useTitle(title || 'Course Details');
 
     // Sample data for what you'll learn and requirements
     const learningObjectives = [

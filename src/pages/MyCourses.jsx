@@ -4,10 +4,12 @@ import axios from 'axios';
 import CourseCard from '../components/CourseCard/CourseCard';
 import { Link } from 'react-router';
 import MyCoursesDetails from '../components/MyCourses/MyCoursesDetails';
+import useTitle from '../hooks/useTitle';
 
 const MyCourses = () => {
     const { user } = use(AuthContext);
     const [data, setData] = useState([]);
+    useTitle('My Courses');
 
     useEffect(() => {
         const fetchCourses = async () => {

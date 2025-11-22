@@ -6,9 +6,11 @@ import { motion } from 'motion/react';
 import StatsCounter from '../components/StatsData/StatsCounter';
 import { useLoaderData } from 'react-router';
 import CourseCard from '../components/CourseCard/CourseCard';
+import useTitle from '../hooks/useTitle';
 
 const Home = () => {
     const homeData = useLoaderData();
+    useTitle('Home');
 
     return (
         <div className="min-h-screen bg-base-100 overflow-x-hidden">

@@ -3,6 +3,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { useParams } from 'react-router';
 import Loader from '../components/Loader/Loader';
+import useTitle from '../hooks/useTitle';
 
 const UpdateCourse = () => {
 
@@ -10,6 +11,7 @@ const UpdateCourse = () => {
     const {id} = useParams();
     const [course, setCourse] = useState([]);
     const [loading, setLoading]= useState(true);
+    useTitle('Update Course');
 
     useEffect(()=>{
         fetch(`http://localhost:3000/courses/${id}`, {

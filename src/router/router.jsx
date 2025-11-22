@@ -13,6 +13,7 @@ import MyCourses from "../pages/MyCourses";
 import UpdateCourse from "../pages/UpdateCourse";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import EnrolledCourses from "../pages/EnrolledCourses";
+import Error404 from "../pages/Error404";
 
 const router = createBrowserRouter([
     {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
                 
             }
         ]
+    },
+    {
+        path: "*",
+        Component: Error404
     }
 ])
 export default router;

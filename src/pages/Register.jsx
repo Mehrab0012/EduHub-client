@@ -7,6 +7,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { useLocation, useNavigate } from 'react-router';
 import styled from 'styled-components';
+import useTitle from '../hooks/useTitle';
 
 const Register = () => {
     const { createUser, setUser } = use(AuthContext);
@@ -18,6 +19,7 @@ const Register = () => {
     const [checkLowerCase, setCheckLowerCase] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle('Register');
 
 
     const handleRegisterWithEmail = (e) => {
@@ -284,4 +286,5 @@ const StyledWrapper = styled.div`
     text-decoration: none;
     color: #0099ff;
     font-size: 9px;
-  }`;
+  }
+`;

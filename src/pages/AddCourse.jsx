@@ -1,10 +1,12 @@
 import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import useTitle from '../hooks/useTitle';
 
 const AddCourse = () => {
 
     const{user} = use(AuthContext);
+    useTitle('Add Course');
 
     const handleAddCourse = (e) => {
         e.preventDefault();

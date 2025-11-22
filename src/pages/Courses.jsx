@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import CourseCard from '../components/CourseCard/CourseCard';
+import useTitle from '../hooks/useTitle';
 
 const Courses = () => {
 
     const courses = useLoaderData();
     const [data , setData]= useState(courses);
+    useTitle('Courses');
 
     
 
