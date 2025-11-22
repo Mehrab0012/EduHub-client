@@ -14,7 +14,7 @@ const MyCourses = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get(`http://eduhub-zeta-one.vercel.app/courses`, {
+                const response = await axios.get(`https://eduhub-zeta-one.vercel.app/courses`, {
                     params: { email: user.email }
                 });
                 setData(response.data);
@@ -28,7 +28,7 @@ const MyCourses = () => {
 
     return (
         <div>
-            <div className='mt-3 mb-20 max-w-7xl m-auto grid grid-cols-2 gap-5 max-md:px-2 lg:grid-cols-4'>
+            <div className='mt-3 mb-20  m-auto grid grid-cols-1 gap-5 max-md:px-2 lg:grid-cols-2 xl:grid-cols-3 '>
                 {
                      data.map((details)=><MyCoursesDetails key={details._id}  details={details}></MyCoursesDetails>)
                 }

@@ -16,7 +16,7 @@ const CourseDetails = () => {
     const {user}= use(AuthContext);
 
     useEffect(() => {
-        fetch(`http://eduhub-zeta-one.vercel.app/courses/${id}`, {
+        fetch(`https://eduhub-zeta-one.vercel.app/courses/${id}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -51,7 +51,7 @@ const CourseDetails = () => {
         return <Loader></Loader>
     }
     const handleEnroll=()=>{
-        fetch('http://eduhub-zeta-one.vercel.app/enrolled',{
+        fetch('https://eduhub-zeta-one.vercel.app/enrolled',{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
