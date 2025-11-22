@@ -280,5 +280,6 @@ const StyledWrapper = styled.div`
     text-decoration: none;
     color: #0099ff;
     font-size: 9px;
-  }`;
+  }
+`;
 export default SignIn;

@@ -41,7 +41,7 @@ export default function StatsCounter() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 1 }}
-      className="flex flex-wrap gap-8 pt-8"
+      className="flex flex-wrap gap-8 pt-8 m-auto"
     >
       {statsData.map((stat, index) => (
         <motion.div

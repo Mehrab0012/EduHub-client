@@ -35,10 +35,9 @@ const TeacherReviews = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                        What Our Teachers Say
-                    </h2>
-                    <p className="mt-4 text-lg text-gray-500">
+                    <h2 className="text-3xl font-bold mb-4 light:text-gray-800">What Our Teachers Say</h2>
+
+                    <p className="text-gray-600 dark:text-[#91adc9] max-w-2xl mx-auto">
                         Hear from the experts who are shaping the future of learning.
                     </p>
                 </motion.div>

@@ -75,8 +75,8 @@ const CourseDetails = () => {
                             <div className="lg:col-span-2">
                                 <p className="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-2">{category}</p>
                                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{title}</h1>
-                                <p className="text-lg text-black mb-6">A comprehensive guide to mastering the concepts for all skill levels.</p>
-                                <div className="flex flex-wrap items-center text-sm text-black gap-x-6 gap-y-2">
+                                <p className="text-lg text-base-content mb-6">A comprehensive guide to mastering the concepts for all skill levels.</p>
+                                <div className="flex flex-wrap items-center text-sm text-base-content gap-x-6 gap-y-2">
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-yellow-400">{rating}</span>
                                         <div className="flex">
@@ -103,7 +103,7 @@ const CourseDetails = () => {
                 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16">
                     <div className="flex max-lg:flex-col-reverse  lg:grid lg:grid-cols-3 lg:gap-8">
                         <div className="lg:col-span-2 max-lg:mt-10 space-y-8">
-                            <div className="bg-white  shadow-xl rounded-lg border border-gray-200  p-8">
+                            <div className="bg-base-100  shadow-xl rounded-lg border border-base-200  p-8">
                                 <h2 className="text-2xl font-bold mb-6">What you'll learn</h2>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                     {learningObjectives.map((objective, index) => (
@@ -115,9 +115,9 @@ const CourseDetails = () => {
                                 </ul>
                             </div>
 
-                            <div className="bg-white  shadow-xl rounded-lg p-8">
-                                <h2 className="text-2xl text-black font-bold mb-4">Description</h2>
-                                <div className="prose dark:prose-invert max-w-none text-black whitespace-pre-line">
+                            <div className="bg-base-100  shadow-xl rounded-lg p-8">
+                                <h2 className="text-2xl text-base-content font-bold mb-4">Description</h2>
+                                <div className="prose dark:prose-invert max-w-none text-base-content whitespace-pre-line">
                                     {description}
                                 </div>
                             </div>
@@ -147,9 +147,9 @@ const CourseDetails = () => {
 
                                         <p className="text-xs text-center text-gray-500 mt-4">30-Day Money-Back Guarantee</p>
                                     </div>
-                                    <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+                                    <div className="p-6 border-t border-base-200">
                                         <h3 className="font-bold text-lg mb-4">This course includes:</h3>
-                                        <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                                        <ul className="space-y-3 text-sm text-base-content/70">
                                             <li className="flex items-center"><FaClock className="mr-3 text-blue-500" />{duration} on-demand video</li>
                                             <li className="flex items-center"><FaLayerGroup className="mr-3 text-blue-500" />Content level: {level}</li>
                                             <li className="flex items-center"><FaInfinity className="mr-3 text-blue-500" />Full lifetime access</li>

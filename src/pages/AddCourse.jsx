@@ -45,21 +45,21 @@ const AddCourse = () => {
 
         <div className="min-h-screen bg-base-200 flex items-center justify-center p-4 sm:p-6 lg:p-8">
           <ToastContainer />
-            <div className="max-w-4xl w-full bg-white rounded-lg shadow-xl p-8 space-y-8">
-                <h2 className="text-3xl font-bold text-center text-gray-800">Add a New Course</h2>
+            <div className="max-w-4xl w-full bg-base-100 rounded-lg shadow-xl p-8 space-y-8">
+                <h2 className="text-3xl font-bold text-center text-base-content">Add a New Course</h2>
                 <form onSubmit={handleAddCourse} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Title */}
                         <div>
-                            <label htmlFor="title" className="block text-sm font-medium text-gray-700">Course Title</label>
-                            <input type="text" name="title" id="title" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <label htmlFor="title" className="block text-sm font-medium text-base-content/80">Course Title</label>
+                            <input type="text" name="title" id="title" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
 
                         {/* Category */}
                         <div>
-                            <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-                            <select name="category" id="category" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <label htmlFor="category" className="block text-sm font-medium text-base-content/80">Category</label>
+                            <select name="category" id="category" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 <option value="">Select a category</option>
                                 <option value="IT & Security">IT & Security</option>
                                 <option value="Development">Development</option>
@@ -72,20 +72,20 @@ const AddCourse = () => {
 
                         {/* Duration */}
                         <div>
-                            <label htmlFor="duration" className="block text-sm font-medium text-gray-700">Duration (e.g., 10h 30m)</label>
-                            <input type="text" name="duration" id="duration" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <label htmlFor="duration" className="block text-sm font-medium text-base-content/80">Duration (e.g., 10h 30m)</label>
+                            <input type="text" name="duration" id="duration" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
                         {/* Price */}
                         <div>
-                            <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price ($)</label>
-                            <input type="number" name="price" id="price" step="0.01" min="0" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                            <label htmlFor="price" className="block text-sm font-medium text-base-content/80">Price ($)</label>
+                            <input type="number" name="price" id="price" step="0.01" min="0" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                         </div>
 
                         {/* Level */}
                         <div>
-                            <label htmlFor="level" className="block text-sm font-medium text-gray-700">Level</label>
-                            <select name="level" id="level" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <label htmlFor="level" className="block text-sm font-medium text-base-content/80">Level</label>
+                            <select name="level" id="level" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 <option value="">Select a level</option>
                                 <option value="Beginner">Beginner</option>
                                 <option value="Intermediate">Intermediate</option>
@@ -97,14 +97,14 @@ const AddCourse = () => {
 
                     {/* Image URL */}
                     <div>
-                        <label htmlFor="image" className="block text-sm font-medium text-gray-700">Image URL</label>
-                        <input type="url" name="image" id="image" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <label htmlFor="image" className="block text-sm font-medium text-base-content/80">Image URL</label>
+                        <input type="url" name="image" id="image" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
 
                     {/* Description */}
                     <div>
-                        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea name="description" id="description" rows="4" required className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        <label htmlFor="description" className="block text-sm font-medium text-base-content/80">Description</label>
+                        <textarea name="description" id="description" rows="4" required className="mt-1 block w-full px-4 py-2 border border-base-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                     </div>
 
                     {/* Submit Button */}

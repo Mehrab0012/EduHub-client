@@ -29,29 +29,32 @@ const MyCoursesDetails = ({ details }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/courses/${_id}`,{
+                fetch(`http://localhost:3000/courses/${_id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     }
-                }).then(res=>res.json())
-                .then(data=>{
-                 window.location.reload()
-                }).catch(err=>{
-                    console.log(err)
-                })
+                }).then(res => res.json())
+                    .then(data => {
+                        window.location.reload()
+                    }).catch(err => {
+                        console.log(err)
+                    })
 
 
-                
+
             }
         });
     }
     return (
         <motion.div
-            className="bg-gray-100 flex justify-between flex-col gap-3 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden  group shadow-lg"
-            whileHover={{ y: -5, borderColor: "#1280ed", boxShadow: "0 10px 20px rgba(18,128,237,0.4)" }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
+            className="bg-base-200 border border-gray-200 rounded-xl overflow-hidden shadow-lg flex flex-col gap-3 p-3"
+            initial={{ borderColor: "#e5e7eb" }}
+            whileHover={{
+                y: -5,
+                borderColor: "#3b82f6",
+                boxShadow: "0 10px 20px rgba(18,128,237,0.4)"
+            }}
             transition={{ duration: 0.3 }}
         >
 
@@ -66,9 +69,9 @@ const MyCoursesDetails = ({ details }) => {
             <div className="p-6 flex flex-col justify-between h-full">
 
                 <div>
-                    <h3 className="text-gray-800 dark:text-white text-lg font-semibold line-clamp-2 mb-2">{title}</h3>
-                    <p className="text-gray-600 dark:text-[#90a4ae] text-sm mb-2">{category} • {level}</p>
-                    <p className="text-gray-700 dark:text-[#cfd8e4] text-sm mb-4 line-clamp-3">{description}</p>
+                    <h3 className="text-base-content text-lg font-semibold line-clamp-2 mb-2">{title}</h3>
+                    <p className="text-base-content/70 text-sm mb-2">{category} • {level}</p>
+                    <p className="text-base-content/80 text-sm mb-4 line-clamp-3">{description}</p>
                 </div>
 
                 <div className='flex gap-4 mt-5 mb-5'>

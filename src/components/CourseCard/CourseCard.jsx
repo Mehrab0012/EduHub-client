@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FaStar } from 'react-icons/fa'; // for rating stars
 import { Link } from 'react-router';
+import { FiClock, FiUser, FiBarChart } from 'react-icons/fi'; // Clean line icons
 
 const CourseCard = ({ details }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    // Destructure the details object
     const {
         _id,
         title,
@@ -16,54 +13,84 @@ const CourseCard = ({ details }) => {
         duration,
         level,
         price,
-        rating,
-        students,
         image
     } = details;
 
     return (
         <motion.div
-            className="bg-gray-100 px-3 py-5 flex justify-between flex-col gap-3 dark:bg-[#1a2633] border border-gray-200 dark:border-[#334d66] rounded-xl overflow-hidden  group shadow-lg"
-            whileHover={{ y: -5, borderColor: "#1280ed", boxShadow: "0 10px 20px rgba(18,128,237,0.4)" }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            transition={{ duration: 0.3 }}
+            className="group flex flex-col h-full bg-base-100 border border-base-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+            initial={{ y: 0 }}
+            whileHover={{ y: -8 }}
         >
-            
-            <div className="relative">
-                <img src={image} alt={title} className="w-full h-48 object-cover" />
-                <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+            {/* --- Image Header --- */}
+            <div className="relative h-48 overflow-hidden">
+                <img 
+                    src={image} 
+                    alt={title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                 />
+                
+                {/* Category Badge (Floating) */}
+                <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 text-xs font-semibold text-white bg-black/50 backdrop-blur-md rounded-full border border-white/20">
+                        {category}
+                    </span>
+                </div>
+
+                {/* Overlay on Hover */}
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
-          
-            <div className="p-6 flex flex-col justify-between h-full">
-        
-                <div>
-                    <h3 className="text-gray-800 dark:text-white text-lg font-semibold max-lg:line-clamp-1 line-clamp-2 mb-2">{title}</h3>
-                    <p className="text-gray-600 dark:text-[#90a4ae] text-sm mb-2">{category} • {level}</p>
-                    <p className="text-gray-700 dark:text-[#cfd8e4] text-sm mb-4 line-clamp-2">{description}</p>
-                </div>
-
-              
-                <div className="flex justify-between items-center mt-auto">
-                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-[#90a4ae]">
-                        <FaStar className="text-yellow-400" />
-                        <span>{rating}</span>
-                        <span>• {students} students</span>
+            {/* --- Content Body --- */}
+            <div className="flex flex-col flex-grow p-5">
+                
+                {/* Header: Level & Price */}
+                <div className="flex justify-between items-start mb-3">
+                    <div className="flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
+                        <FiBarChart />
+                        <span>{level}</span>
                     </div>
-                    <span className="text-gray-800 dark:text-white font-semibold text-lg">${price}</span>
+                    <span className="text-xl font-bold text-primary">
+                        ${price}
+                    </span>
                 </div>
 
-             
-                <div className="flex justify-between mt-4 text-gray-600 dark:text-[#90a4ae] text-xs">
-                    <span>{author}</span>
-                    <span>{duration}</span>
+                {/* Title */}
+                <h3 className="text-lg font-bold text-base-content leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    {title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-base-content/60 line-clamp-2 mb-4">
+                    {description}
+                </p>
+
+                {/* Divider */}
+                <div className="border-t border-base-200 my-auto mb-4"></div>
+
+                {/* Meta Data (Author & Duration) */}
+                <div className="flex items-center justify-between text-xs text-base-content/70 mb-5">
+                    <div className="flex items-center gap-2">
+                        <div className="p-1.5 bg-base-200 rounded-full">
+                            <FiUser className="w-3 h-3" />
+                        </div>
+                        <span className="font-medium truncate max-w-[100px]">{author}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <FiClock className="w-3 h-3" />
+                        <span>{duration}</span>
+                    </div>
                 </div>
-                <div>
-                    <Link to={`/courses/${_id}`}><button className='text-white w-full bg-blue-500 rounded-xl mt-5 cursor-pointer py-2'>View Details</button></Link>
-                </div>
+
+                {/* CTA Button */}
+                <Link
+                    to={`/courses/${_id}`}
+                    className="block w-full"
+                >
+                    <button className="w-full py-3 rounded-xl bg-base-200 text-base-content font-semibold hover:bg-primary hover:text-white transition-all duration-300 active:scale-95">
+                        View Details
+                    </button>
+                </Link>
             </div>
         </motion.div>
     );

@@ -24,7 +24,7 @@ const AuthenticateLayout = () => {
                     <div className="flex flex-col max-w-7xl w-full justify-center py-5">
 
                         <div className="text-center mb-8">
-                            <h1 className="text-3xl font-bold text-black">
+                            <h1 className="text-3xl font-bold light:text-gray-800 text-white">
                                 Welcome to EduHub
                             </h1>
                         </div>

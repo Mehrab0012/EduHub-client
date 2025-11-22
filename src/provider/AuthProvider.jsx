@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router';
 
 export const AuthContext = createContext();
 
@@ -9,6 +10,26 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+
+    const handleTheme = (e) => {
+        if (e.target.checked) {
+            setTheme('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            setTheme('light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    useEffect(() => {
+        const localTheme = localStorage.getItem('theme');
+        if (localTheme) {
+            setTheme(localTheme);
+        }
+    }, []);
 
 
     const createUser = (email, password) => {
@@ -19,32 +40,32 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
-            
-            
+
+
         });
         return () => {
             unsubscribe();
         }
     }, []);
 
-    const signIn = (email,password)=>{
+    const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const handleSignOut = () => {
         signOut(auth)
-        .then(() => {
-            toast.success("Sign Out Successfully");
-            setUser(null);
+            .then(() => {
+                toast.success("Sign Out Successfully");
+                setUser(null);
 
-        })
-        .catch((error) => {
-            console.error("Error signing out:", error);
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error);
 
-        });
+            });
     }
-    const updateUser = (updatedData)=>{
+    const updateUser = (updatedData) => {
         return updateProfile(auth.currentUser, updatedData);
     }
     const authData = {
@@ -55,11 +76,14 @@ const AuthProvider = ({ children }) => {
         handleSignOut,
         loading,
         setLoading,
-        updateUser
+        updateUser,
+        handleTheme,
+        theme,
+
     }
-    return <AuthContext value={authData}>
+    return <AuthContext.Provider value={authData}>
         {children}
-    </AuthContext>
+    </AuthContext.Provider>
 };
 
 export default AuthProvider;
