@@ -14,7 +14,7 @@ const MyCourses = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/courses`, {
+                const response = await axios.get(`http://eduhub-zeta-one.vercel.app/courses`, {
                     params: { email: user.email }
                 });
                 setData(response.data);

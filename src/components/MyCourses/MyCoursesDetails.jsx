@@ -29,7 +29,7 @@ const MyCoursesDetails = ({ details }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/courses/${_id}`, {
+                fetch(`http://eduhub-zeta-one.vercel.app/courses/${_id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",

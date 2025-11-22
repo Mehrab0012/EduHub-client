@@ -15,7 +15,7 @@ const Courses = () => {
         e.preventDefault();
         const search = e.target.search.value;
         console.log(search);
-        fetch(`http://localhost:3000/search?search=${search}`)
+        fetch(`http://eduhub-zeta-one.vercel.app/search?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

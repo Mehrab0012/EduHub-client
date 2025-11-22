@@ -24,7 +24,7 @@ const AddCourse = () => {
 
         const newCourse = { title, author,email, category, duration, price, level, image, description, date };
         
-        fetch('http://localhost:3000/courses',{
+        fetch('http://eduhub-zeta-one.vercel.app/courses',{
             method: "POST",
             headers:{
                 "Content-Type": "application/json",

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 index:true,
                 Component: Home,
-                loader: ()=>fetch('http://localhost:3000/latest-courses')
+                loader: ()=>fetch('http://eduhub-zeta-one.vercel.app/latest-courses')
             },
             {
                 path:'authenticate',
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: 'courses',
                 Component: Courses,
-                loader:()=>fetch('http://localhost:3000/courses' ) ,
+                loader:()=>fetch('http://eduhub-zeta-one.vercel.app/courses' ) ,
             },
             {
                 path: 'courses/:id',
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <EnrolledCourses></EnrolledCourses>
                 </PrivateRoute>,
-                loader:()=>fetch('http://localhost:3000/enrolled' ) ,
+                loader:()=>fetch('http://eduhub-zeta-one.vercel.app/enrolled' ) ,
                 
             }
         ]

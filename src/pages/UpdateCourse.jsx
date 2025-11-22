@@ -14,7 +14,7 @@ const UpdateCourse = () => {
     useTitle('Update Course');
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/courses/${id}`, {
+        fetch(`http://eduhub-zeta-one.vercel.app/courses/${id}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -41,7 +41,7 @@ const UpdateCourse = () => {
 
         const update = { title, category, duration, price, level, image, description,};
         
-        fetch(`http://localhost:3000/courses/${course._id}`,{
+        fetch(`http://eduhub-zeta-one.vercel.app/courses/${course._id}`,{
             method: "PUT",
             headers:{
                 "Content-Type": "application/json",
