@@ -15,7 +15,6 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "firebase": "^12.5.0",
-    "firebase-auth": "^0.1.2",
     "lucide-react": "^0.553.0",
     "mongodb": "^7.0.0",
     "motion": "^12.23.24",

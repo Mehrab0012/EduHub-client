@@ -62,10 +62,10 @@ The website features a professional, minimal, and modern interface with:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/eduhub.git
+https://github.com/Mehrab0012/EduHub-client
 
 # Navigate to project directory
-cd eduhub
+cd EduHub-client
 
 # Install dependencies
 npm install
@@ -107,7 +107,7 @@ Empowering learners through technology.
 
 ## 🌐 Live Preview
 
-
+https://eduhub-0012.netlify.app/
 
 ---
 
